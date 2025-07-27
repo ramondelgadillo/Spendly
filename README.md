@@ -85,7 +85,7 @@ The app will be available at:
 📍 http://127.0.0.1:8000
 
 
-🧠 How It Works
+## 🧠 How It Works
 
 # main.py – FastAPI App
   Defines all routes:
