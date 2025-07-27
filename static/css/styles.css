@@ -1,0 +1,129 @@
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #212124;
+  color: #7FC9A6;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 2rem;
+  color: #7FC9A6;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 2rem;
+  color: #7FC9A6;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #7FC9A6;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1.4rem;
+  color: #eee;
+  font-weight: bold;
+}
+
+.card {
+  background-color: #2a2b2f;
+  color: #fff;
+  border: none;
+  border-radius: 12px !important;
+}
+
+.card-body {
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.table th,
+.table td {
+  color: #eee;
+  vertical-align: middle;
+}
+
+input::placeholder,
+select,
+textarea::placeholder {
+  color: #ccc !important;
+}
+
+.form-control,
+.form-select {
+  background-color: #2a2b2f !important;
+  color: #fff !important;
+  border: none;
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.15);
+}
+
+
+.btn-custom-green {
+  background-color: #7FC9A6;
+  color: #fff; /* or white (#fff) if you prefer */
+  border: none; /* optional: remove border */
+  font-weight: bold;
+}
+
+.btn-back-green {
+  background-color: #7FC9A6; /* pastel green */
+  color: #fff;               /* white arrow */
+  border: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-back-green:hover {
+  background-color: transparent; /* clear background */
+  color: #7FC9A6;                /* pastel green arrow */
+  border: 2px solid #7FC9A6;    /* optional border to keep shape visible */
+}
+
+.bi-arrow-left {
+  font-size: 1.5rem;
+  background: none !important;
+  color: inherit; /* inherit white from button */
+  font-weight: bold;
+
+    /* Text shadow to thicken the icon */
+  text-shadow:
+  -1px 0 currentColor,
+  1px 0 currentColor,
+  0 -1px currentColor,
+  0 1px currentColor;
+}
+
+.app-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #7FC9A6;
+}

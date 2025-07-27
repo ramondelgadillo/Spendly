@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Summary Row -->
+<div class="row g-3 mb-6">
+  <!-- Total Spending -->
+  <div class="col-md-4">
+    <div
+      class="card bg-opacity-25 text-white border-0 shadow-sm h-100"
+      style="background-color: #7FC9A6;"
+    >
+      <div class="card-body">
+        <h5 class="card-title fw-bold fs-3">Total Spending</h5>
+        <h3 class="fw-bold fs-2 card-text">${{ '%.2f' | format(total) }}</h3>
+      </div>
+    </div>
+  </div>
+
+    <!-- Spending Summary by Category -->
+  <div class="col-md-6">
+    <div class="card bg-dark border-secondary text-white shadow-sm h-100">
+      <div class="card-body">
+        <h6 class="card-title fw-bold">Spending by Category</h6>
+        <ul class="list-unstyled mb-0">
+          {% for cat, amt in categories.items() %}
+            <li class="d-flex justify-content-between">
+              <span>{{ cat }}</span>
+              <span>${{ '%.2f' | format(amt) }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-2 d-flex justify-content-end align-items-start">
+    <a href="{{ url_for('add_expense') }}" class="btn btn-custom-green">
+      <i class="bi bi-plus-circle me-1"></i> Add Expense
+    </a>
+  </div>
+
+  <!-- Filter by Category -->
+  <form method="get" class="mb-4">
+      <div class="row g-2 align-items-right">
+          <div class="col-auto">
+              <label for="category" class="col-form-label">Filter by Category:</label>
+          </div>
+          <div class="col-auto">
+              <select name="category" id="category" class="form-select bg-dark text-white border-secondary">
+                  <option value="">All</option>
+                  {% for option in ["Food", "Transportation", "Utilities", "Entertainment", "Shopping", "Healthcare", "Other"] %}
+                      <option value="{{ option }}" {% if option == selected_category %}selected{% endif %}>
+                          {{ option }}
+                      </option>
+                  {% endfor %}
+              </select>
+          </div>
+          <div class="col-auto">
+              <button type="submit" class="btn btn-outline-light">Filter</button>
+          </div>
+      </div>
+  </form>
+
+</div>
+<!-- Expense Table -->
+<div class="card">
+   <div class="card-body p-0">
+    <table class="table table-dark table-striped mb-0 align-middle">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Amount ($)</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th style="width: 100px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.description }}</td>
+                    <td>{{ '{:.2f}'.format(expense.amount) }}</td>
+                    <td>{{ expense.category }}</td>
+                    <td>{{ expense.date.strftime("%b %d, %Y, %I:%M %p") }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_expense', expense_id=expense.id) }}" class="text-info me-2" title="Edit">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="{{ url_for('delete_expense', expense_id=expense.id) }}" class="text-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this expense?');">
+                            <i class="bi bi-trash-fill"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No expenses found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+
+{% endblock %}
