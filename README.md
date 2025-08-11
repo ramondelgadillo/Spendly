@@ -49,6 +49,12 @@ expense-tracker/
 └── README.md              # Project info
 
 
+## Screenshots
+
+![Main Screen](images/SpendlyHomePage.png)  
+
+![Adding a New Expense](images/SpendlyNewExpense.png)  
+
 ---
 
 ## ▶️ Getting Started
