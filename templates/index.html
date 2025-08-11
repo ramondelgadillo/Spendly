@@ -47,17 +47,15 @@
               <label for="category" class="col-form-label">Filter by Category:</label>
           </div>
           <div class="col-auto">
-              <select name="category" id="category" class="form-select bg-dark text-white border-secondary">
-                  <option value="">All</option>
-                  {% for option in ["Food", "Transportation", "Utilities", "Entertainment", "Shopping", "Healthcare", "Other"] %}
-                      <option value="{{ option }}" {% if option == selected_category %}selected{% endif %}>
-                          {{ option }}
-                      </option>
-                  {% endfor %}
-              </select>
-          </div>
-          <div class="col-auto">
-              <button type="submit" class="btn btn-outline-light">Filter</button>
+            <select name="category" id="category-filter" class="form-select bg-dark text-white border-secondary">
+              <option value="all" {% if selected_category == '' %}selected{% endif %}>All</option>
+              {% for option in ["Food", "Transportation", "Utilities", "Entertainment", "Shopping", "Healthcare", "Other"] %}
+                  <option value="{{ option }}" {% if option == selected_category %}selected{% endif %}>
+                      {{ option }}
+                  </option>
+              {% endfor %}
+          </select>
+
           </div>
       </div>
   </form>
@@ -81,7 +79,7 @@
                 <tr>
                     <td>{{ expense.description }}</td>
                     <td>{{ '{:.2f}'.format(expense.amount) }}</td>
-                    <td>{{ expense.category }}</td>
+                    <td data-category="{{ expense.category }}">{{ expense.category }}</td>
                     <td>{{ expense.date.strftime("%b %d, %Y, %I:%M %p") }}</td>
                     <td>
                         <a href="{{ url_for('edit_expense', expense_id=expense.id) }}" class="text-info me-2" title="Edit">
@@ -100,5 +98,38 @@
         </tbody>
     </table>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filter = document.getElementById('category-filter');
+      const rows = document.querySelectorAll('table tbody tr');
+
+      function applyFilter() {
+        const selected = filter.value;
+
+        rows.forEach(row => {
+          const categoryCell = row.querySelector('td[data-category]');
+          if (!categoryCell) return;
+
+          if (selected === 'all' || categoryCell.dataset.category === selected) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
+
+      // Apply filter immediately on page load
+      applyFilter();
+
+      // When user changes dropdown, apply filter client-side only (prevent form submit)
+      filter.addEventListener('change', (event) => {
+        event.preventDefault();
+        applyFilter();
+      });
+    });
+  </script>
+
+
 
 {% endblock %}

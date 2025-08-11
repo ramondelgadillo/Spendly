@@ -1,19 +1,14 @@
 # 💸 Spendly – Expense Tracker Web App
 
-Spendly is a simple and modern expense tracking web application built with FastAPI, SQLite, Jinja2, and Bootstrap 5. It lets users log, view, edit, and delete expenses with ease, all within a responsive and clean user interface.
-
-
-🧠 Perfect for tracking day-to-day expenses and visualizing where your money goes—no login or third-party accounts required.
-
----
+Spendly is a simple and modern expense tracking web application built with FastAPI, SQLite, Jinja2, Bootstrap 5, and vanilla JavaScript. It lets users log, view, edit, and delete expenses with ease, all within a responsive and clean user interface enhanced by interactive features.
 
 ## ✨ Features
 
 - ➕ Add new expenses with description, amount, category, and auto timestamp
-- 🔁 Edit or delete existing expenses
+- 🔁 Edit or delete existing expenses with confirmation prompts
 - 📅 View all expenses in a sortable table
 - 💰 See **total spending** and a **category breakdown**
-- 🔍 Filter by category using a dropdown
+- 🔍 Instantly filter expenses by category with client-side filtering using vanilla JavaScript
 - 🌓 Dark-mode-friendly UI with Bootstrap 5 styling
 - ⚡ Blazing fast backend using FastAPI
 
@@ -25,6 +20,7 @@ Spendly is a simple and modern expense tracking web application built with FastA
 - **SQLite** database via SQLAlchemy ORM
 - **Jinja2** for HTML templating
 - **Bootstrap 5** for UI and responsiveness
+- **JavaScript** for client-side interactivity
 - **Uvicorn** for running the FastAPI server
 
 ---
@@ -57,6 +53,8 @@ expense-tracker/
 
 ## ▶️ Getting Started
 
+### 🔧 Option 1: Run Locally
+
 ### 1. Clone the repository
 
 git clone https://github.com/your-username/expense-tracker.git
@@ -83,6 +81,18 @@ uvicorn main:app --reload
 
 The app will be available at:
 📍 http://127.0.0.1:8000
+
+
+🐳 Option 2: Run with Docker
+
+# 1. Build the Docker image
+docker build -t spendly .
+
+# 2. Run the container
+docker run -d -p 8000:8000 spendly
+
+App will be available at:
+📍 http://localhost:8000
 
 
 ## 🧠 How It Works
