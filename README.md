@@ -1,20 +1,20 @@
-# 💸 Spendly – Expense Tracker Web App
+# Spendly – Expense Tracker Web App
 
 Spendly is a simple and modern expense tracking web application built with FastAPI, SQLite, Jinja2, Bootstrap 5, and vanilla JavaScript. It lets users log, view, edit, and delete expenses with ease, all within a responsive and clean user interface enhanced by interactive features.
 
-## ✨ Features
+## Features
 
-- ➕ Add new expenses with description, amount, category, and auto timestamp
-- 🔁 Edit or delete existing expenses with confirmation prompts
-- 📅 View all expenses in a sortable table
-- 💰 See **total spending** and a **category breakdown**
-- 🔍 Instantly filter expenses by category with client-side filtering using vanilla JavaScript
-- 🌓 Dark-mode-friendly UI with Bootstrap 5 styling
-- ⚡ Blazing fast backend using FastAPI
+- Add new expenses with description, amount, category, and auto timestamp
+- Edit or delete existing expenses with confirmation prompts
+- View all expenses in a sortable table
+- See **total spending** and a **category breakdown**
+- Instantly filter expenses by category with client-side filtering using vanilla JavaScript
+- Dark-mode UI with Bootstrap 5 styling
+
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Python** with [FastAPI](https://fastapi.tiangolo.com/)
 - **SQLite** database via SQLAlchemy ORM
@@ -26,7 +26,7 @@ Spendly is a simple and modern expense tracking web application built with FastA
 ---
 
 
-## 📁 Project Structure
+##  Project Structure
 
 expense-tracker/
 │
@@ -57,7 +57,7 @@ expense-tracker/
 
 ---
 
-## ▶️ Getting Started
+## Getting Started
 
 ### 🔧 Option 1: Run Locally
 
@@ -86,10 +86,10 @@ uvicorn main:app --reload
 
 
 The app will be available at:
-📍 http://127.0.0.1:8000
+ http://127.0.0.1:8000
 
 
-🐳 Option 2: Run with Docker
+Option 2: Run with Docker
 
 # 1. Build the Docker image
 docker build -t spendly .
@@ -98,10 +98,10 @@ docker build -t spendly .
 docker run -d -p 8000:8000 spendly
 
 App will be available at:
-📍 http://localhost:8000
+ http://localhost:8000
 
 
-## 🧠 How It Works
+## How It Works
 
 # main.py – FastAPI App
   Defines all routes:
@@ -164,7 +164,7 @@ App will be available at:
 
   Includes dropdown for predefined categories
 
-📦 Example UI Layout
+Example UI Layout
 
 +----------------------------+      +----------------------------+      +--------------------+
 |     Total Spending         |      |  Spending by Category      |      |   [+] Add Expense   |
@@ -180,21 +180,6 @@ App will be available at:
 | Walmart     | Food         | $60.00 | Jul 7, 2025 10:12 AM | ✏️ 🗑️     |
 +---------------------------------------------------------------+
 
-🧪 Development Tips
-If you change model fields (like renaming name to description), delete the expenses.db file to regenerate the schema:
 
-  rm expenses.db
 
-  Then re-run the app to auto-create a fresh database.
 
-🚧 Potential Enhancements
-
- Export data to CSV
-
- Charts for category-wise breakdown (e.g. Chart.js)
-
- Add login/authentication
-
- Set spending goals
-
- Pagination or infinite scroll
